@@ -68,22 +68,22 @@ public class EmployeeFacadeTest {
 //        Remove any data after each test was run
     }
 
-    // TODO: Delete or change this method
-    @Test
-    public void testAhigestSalery() throws Exception {
-        assertEquals(435867, facade.higestSalery(), "Highest salary should be 435867");
-    }
-
-    @Test
-    public void testAAllFirstNames() throws Exception {
-        List<String> expected = Arrays.asList("Hanne", "Tian", "Irene", "Jan", "Kurt");
-        assertEquals(expected, facade.getAllFirstNames());
-    }
-
-    @Test
-    public void testhowManyEmployees() throws Exception {
-        assertEquals(5, facade.howManyEmployees());
-    }
+//    // TODO: Delete or change this method
+//    @Test
+//    public void testAhigestSalery() throws Exception {
+//        assertEquals(435867, facade.higestSalery(), "Highest salary should be 435867");
+//    }
+//
+//    @Test
+//    public void testAAllFirstNames() throws Exception {
+//        List<String> expected = Arrays.asList("Hanne", "Tian", "Irene", "Jan", "Kurt");
+//        assertEquals(expected, facade.getAllFirstNames());
+//    }
+//
+//    @Test
+//    public void testhowManyEmployees() throws Exception {
+//        assertEquals(5, facade.howManyEmployees());
+//    }
 
 //    @Test
 //    public void testAgetAllRichEmployee() throws Exception {
