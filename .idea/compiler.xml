@@ -14,7 +14,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="devops-starter" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
-      <module name="rest-demo" options="-endorseddirs &quot;C:\Users\Alex\OneDrive\Datamatik\3.Semester\Flow 1\Startkode\rest-demo\target/endorsed&quot;" />
+      <module name="rest-demo" options="-endorseddirs &quot;C:\Users\pc\OneDrive\Datamatik\3.Semester\Flow 1\Startkode\rest-demo\target/endorsed&quot;" />
     </option>
   </component>
 </project>
