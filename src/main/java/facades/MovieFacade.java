@@ -16,7 +16,7 @@ import utils.EMF_Creator;
 public class MovieFacade {
 
     private static MovieFacade instance;
-    private static EntityManagerFactory emf;
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 
     //Private Constructor to ensure Singleton
     private MovieFacade() {}
@@ -39,26 +39,23 @@ public class MovieFacade {
         return emf.createEntityManager();
     }
 
-    public String getMovieById(Long id) {
-        emf = Persistence.createEntityManagerFactory("pu");
+    public Movie getMovieById(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Query query = em.createQuery("Select m FROM Movie m WHERE m.id = :id");
+            TypedQuery<Movie> query = em.createQuery("Select m FROM Movie m WHERE m.id = :id", Movie.class);
             query.setParameter("id", id);
-            String result2 = query.getResultList().toString();
+            Movie movie = query.getSingleResult();
             em.getTransaction().commit();
 
-            return result2;
+            return movie;
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
     public List<String> getAllTitles() {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -69,12 +66,10 @@ public class MovieFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
     public void getTestData() {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -84,7 +79,22 @@ public class MovieFacade {
 
         } finally {
             em.close();
-            emf.close();
+        }
+    }
+
+    public long howManyMovies()
+    {
+        EntityManager em = emf.createEntityManager();
+        try{
+           // em.getTransaction().begin();
+            return (long) em.createQuery("SELECT count(m.id) From Movie m").getSingleResult();
+
+           // long count = query.getSingleResult();
+
+           // return count;
+
+        } finally {
+            em.close();
         }
     }
 
@@ -92,7 +102,8 @@ public class MovieFacade {
 
         MovieFacade test = new MovieFacade();
 //        test.getTestData();
-        System.out.println(test.getMovieById(1L));
-        System.out.println(test.getAllTitles());
+        System.out.println(test.getMovieById(1));
+//        System.out.println(test.getAllTitles());
+        System.out.println(test.howManyMovies());
     }
 }

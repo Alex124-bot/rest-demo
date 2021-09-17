@@ -31,7 +31,6 @@ public class EmployeeFacade {
 
     //1) Create a query to fetch all employees with a salary > 100000 and print out all the salaries
     public List getAllRichEmployee() {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -43,14 +42,12 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
 
     }
 
     //2) Create a query to fetch the employee with the id "klo999" and print out the firstname
     public Employee getEmployeeById(String id) {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -63,13 +60,11 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
     //3) Create a query to fetch the highest salary and print the value
     public int higestSalery() {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -80,14 +75,12 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
     //4) Create a query to fetch the firstName of all Employees and print the names
 
     public List<String> getAllFirstNames() {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -98,7 +91,6 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
@@ -106,7 +98,6 @@ public class EmployeeFacade {
 
     public Long howManyEmployees()
     {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try{
             em.getTransaction().begin();
@@ -120,7 +111,6 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
@@ -128,7 +118,6 @@ public class EmployeeFacade {
 
     public Employee detailsOnHigestSalery()
     {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -139,13 +128,11 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 
 
     public void getTestData() {
-        emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -158,7 +145,6 @@ public class EmployeeFacade {
 
         } finally {
             em.close();
-            emf.close();
         }
     }
 

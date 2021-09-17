@@ -10,6 +10,8 @@ import java.util.Arrays;
 @NamedQuery(name = "Movie.getByTitle", query = "SELECT m FROM Movie m WHERE m.title LIKE :title")
 })
 
+@NamedNativeQuery(name = "Movie.ResetId", query = "ALTER table Movie AUTO_INCREMENT = 1")
+
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
