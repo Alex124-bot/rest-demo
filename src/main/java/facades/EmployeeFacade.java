@@ -132,8 +132,8 @@ public class EmployeeFacade {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Query query = em.createQuery("select max(e.salary), FROM Employee e");
-            Employee result5 = (Employee) query.getSingleResult();
+            TypedQuery<Employee> typedquery = em.createQuery("select e from Employee e where e.salary = (select max(e.salary) from Employee e)", Employee.class);
+            Employee result5 = typedquery.getSingleResult();
             em.getTransaction().commit();
             return result5;
 
@@ -166,10 +166,10 @@ public class EmployeeFacade {
 //
         try {
             EmployeeFacade test = new EmployeeFacade();
-            test.getTestData();
+//            test.getTestData();
 //            Gson gson = new Gson();
 //
-            System.out.println(test.getAllRichEmployee());
+//            System.out.println(test.getAllRichEmployee());
 //
 //            System.out.println(test.getEmployeeById("klo999"));
 //
