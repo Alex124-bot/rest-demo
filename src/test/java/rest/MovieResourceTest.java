@@ -64,7 +64,6 @@ public class MovieResourceTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-
             em.persist(new Movie(1972, "Olsenbanden på spanden", new String[]{"Benny", "Egon", "Yvonne"}));
             em.persist(new Movie(1971, "Huset på Christianshavn", new String[]{"Ove Sprogø", "Ghitta Nørby"}));
             em.getTransaction().commit();
@@ -74,21 +73,19 @@ public class MovieResourceTest {
     }
 
     @AfterEach
-    public void afterEach()
-    {
+    public void afterEach() {
     EntityManager em = emf.createEntityManager();
-
         try {
-        em.getTransaction().begin();
-        em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
-        em.createNamedQuery("Movie.ResetId").executeUpdate();
-        em.getTransaction().commit();
-    } finally {
+            em.getTransaction().begin();
+            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Movie.ResetId").executeUpdate();
+            em.getTransaction().commit();
+        } finally {
 
-        em.close();
+            em.close();
+        }
+
     }
-
-}
 
     @Test
     public void testServerIsUp() {
