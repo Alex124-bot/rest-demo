@@ -2,6 +2,7 @@ package rest;
 
 import entities.Movie;
 import entities.RenameMe;
+import org.junit.jupiter.api.*;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -16,11 +17,6 @@ import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.Matchers.equalTo;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
 
@@ -68,8 +64,7 @@ public class MovieResourceTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
-            em.createNamedQuery("Movie.ResetId").executeUpdate();
+
             em.persist(new Movie(1972, "Olsenbanden på spanden", new String[]{"Benny", "Egon", "Yvonne"}));
             em.persist(new Movie(1971, "Huset på Christianshavn", new String[]{"Ove Sprogø", "Ghitta Nørby"}));
             em.getTransaction().commit();
@@ -77,6 +72,23 @@ public class MovieResourceTest {
             em.close();
         }
     }
+
+    @AfterEach
+    public void afterEach()
+    {
+    EntityManager em = emf.createEntityManager();
+
+        try {
+        em.getTransaction().begin();
+        em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Movie.ResetId").executeUpdate();
+        em.getTransaction().commit();
+    } finally {
+
+        em.close();
+    }
+
+}
 
     @Test
     public void testServerIsUp() {
